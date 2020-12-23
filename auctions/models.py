@@ -23,6 +23,10 @@ class Listing(models.Model):
         max_length=7,
         choices=CATEGORY_CHOICES
     )
+    created_by = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.title
