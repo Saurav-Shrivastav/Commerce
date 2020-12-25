@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 
 class User(AbstractUser):
@@ -17,8 +18,8 @@ class Listing(models.Model):
     )
     title = models.CharField(max_length=255)
     description = models.TextField()
-    image_url = models.URLField()
-    starting_bid = models.DecimalField(max_digits=19, decimal_places=10)
+    image_url = models.URLField(blank=True, null=True)
+    starting_bid = models.DecimalField(max_digits=19, decimal_places=2)
     category = models.CharField(
         max_length=7,
         choices=CATEGORY_CHOICES
@@ -27,6 +28,7 @@ class Listing(models.Model):
         User,
         on_delete=models.CASCADE
     )
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title

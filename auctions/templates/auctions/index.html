@@ -2,6 +2,31 @@
 
 {% block body %}
     <h2>Active Listings</h2>
-
-    TODO
+    
+    <div class="card mb-3" style="max-width: 100vw;">
+        <div class="row no-gutters">
+            {% for listing in listings %}
+                <div class="col-md-4" style="border-right: thin solid rgb(129, 124, 124);">
+                    {% if listing.image_url %}
+                        <img src="{{ listing.image_url }}" class="card-img" alt="Card-image">
+                    {% else %}
+                        <img 
+                            src="https://www.wpha.org/global_graphics/default-store-350x350.jpg" alt="Card-image" class="card-img"
+                        >
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ listing.title }}</h5>
+                    <p class="card-text"><strong>Price: </strong>{{ listing.starting_bid }}</p>
+                    <p class="card-text">{{ listing.description }}</p>
+                    <p class="card-text"><small class="text-muted">Created by - {{ listing.created_by }}</small></p>
+                    <p class="card-text"><small class="text-muted">{{ listing.created_at }}</small></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+      
 {% endblock %}

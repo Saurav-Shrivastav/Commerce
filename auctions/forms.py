@@ -7,4 +7,4 @@ class CreateListingForm(forms.ModelForm):
     '''A form to create listings'''
     class Meta:
         model = Listing
-        exclude = ("created_by", )
+        exclude = ("created_by", "creates_at")
