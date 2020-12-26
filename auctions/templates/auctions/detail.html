@@ -1,0 +1,66 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+    <div class="container" id="product-section">
+        <div class="row">
+
+            <div class="col-md-6">
+                {% if listing.image_url %}
+                    <img
+                        src="{{ listing.image_url }}"
+                        alt=""
+                        class="image-responsive"
+                        style="width: 100%;"
+                    >
+                {% else %}
+                    <img
+                        src="https://www.wpha.org/global_graphics/default-store-350x350.jpg"
+                        alt=""
+                        class="image-responsive"
+                        style="width: 100%;"
+                    >
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <h1>{{ listing.title }}</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="badge badge-primary">
+                            {{ listing.category }}
+                        </span>
+                        <span>
+                            <small class="text-muted">
+                                {{ listing.created_at }}
+                            </small>
+                        </span>
+                        <span>
+                            <small class="text-muted">
+                                {{ listing.created_by }}
+                            </small>
+                        </span>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="description">
+                            {{ listing.description }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 bottom-rule">
+                        <h2 class="product-price">${{ listing.starting_bid }}</h2>
+                    </div>
+                </div><!-- end row -->
+                   
+            </div>
+
+        </div><!-- end row -->
+    </div><!-- end container -->
+  
+{% endblock %}

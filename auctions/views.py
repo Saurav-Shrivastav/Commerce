@@ -81,3 +81,11 @@ def create(request):
     return render(request, "auctions/create.html", {
         'form': form
     })
+
+
+def listingDetail(request, pk):
+    listing = Listing.objects.get(id=pk)
+    context = {
+        'listing': listing
+    }
+    return render(request, 'auctions/detail.html', context)

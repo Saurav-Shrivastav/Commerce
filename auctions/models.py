@@ -9,19 +9,19 @@ class User(AbstractUser):
 
 class Listing(models.Model):
     CATEGORY_CHOICES = (
-        ("fashion", "Fashion"),
-        ("tech", "Technology"),
-        ("elec", "Electronics"),
-        ("home", "Home"),
-        ("pantry", "Pantry"),
-        ("toys", "Toys")
+        ("Fashion", "Fashion"),
+        ("Technology", "Technology"),
+        ("Electronics", "Electronics"),
+        ("Home", "Home"),
+        ("Pantry", "Pantry"),
+        ("Toys", "Toys")
     )
     title = models.CharField(max_length=255)
     description = models.TextField()
     image_url = models.URLField(blank=True, null=True)
     starting_bid = models.DecimalField(max_digits=19, decimal_places=2)
     category = models.CharField(
-        max_length=7,
+        max_length=20,
         choices=CATEGORY_CHOICES
     )
     created_by = models.ForeignKey(

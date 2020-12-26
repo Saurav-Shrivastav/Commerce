@@ -8,22 +8,28 @@
             {% for listing in listings %}
                 <div class="col-md-4" style="border-right: thin solid rgb(129, 124, 124);">
                     {% if listing.image_url %}
-                        <img src="{{ listing.image_url }}" class="card-img" alt="Card-image">
+                        <a href="{% url 'detail' listing.id %}">
+                            <img src="{{ listing.image_url }}" class="card-img" alt="Card-image">
+                        </a>
                     {% else %}
-                        <img 
-                            src="https://www.wpha.org/global_graphics/default-store-350x350.jpg" alt="Card-image" class="card-img"
-                        >
+                        <a href="{% url 'detail' listing.id %}">
+                            <img 
+                                src="https://www.wpha.org/global_graphics/default-store-350x350.jpg" alt="Card-image" class="card-img"
+                            >
+                        </a>
                     {% endif %}
                 </div>
                 
-                <div class="col-md-8">
-                    <div class="card-body">
-                    <h5 class="card-title">{{ listing.title }}</h5>
-                    <p class="card-text"><strong>Price: </strong>{{ listing.starting_bid }}</p>
-                    <p class="card-text">{{ listing.description }}</p>
-                    <p class="card-text"><small class="text-muted">Created by - {{ listing.created_by }}</small></p>
-                    <p class="card-text"><small class="text-muted">{{ listing.created_at }}</small></p>
-                    </div>
+                <div class="col-md-7">
+                    <a href="{% url 'detail' listing.id %}" style="text-decoration: none; color: black;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ listing.title }}</h5>
+                            <p class="card-text"><strong>Price: </strong>{{ listing.starting_bid }}</p>
+                            <p class="card-text">{{ listing.description }}</p>
+                            <p class="card-text"><small class="text-muted">Created by - {{ listing.created_by }}</small></p>
+                            <p class="card-text"><small class="text-muted">{{ listing.created_at }}</small></p>
+                        </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
